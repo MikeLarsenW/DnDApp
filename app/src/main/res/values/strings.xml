@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">DnD-Mobile-App</string>
+    <string name="app_name">DnD Mobile App</string>
+    <string-array name="diceSpinnerElements">
+        <item>Select Type</item>
+        <item>D4</item>
+        <item>D6</item>
+        <item>D8</item>
+        <item>D10</item>
+        <item>D12</item>
+        <item>D20</item>
+
+    </string-array>
 </resources>
