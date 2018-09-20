@@ -10,4 +10,7 @@
         <item>D20</item>
 
     </string-array>
+    <string name="roll">Roll</string>
+    <string name="shake_switch">Shake to Roll </string>
+    <string name="diceNum">Number of Dice </string>
 </resources>
