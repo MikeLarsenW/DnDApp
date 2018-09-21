@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,19 +32,13 @@ public class DiceActivity extends AppCompatActivity{
     //Define variables, views, and sensors
     Spinner s;
     Button btn;
-    TextView result1TV;
-    TextView result2TV;
-    TextView result3TV;
-    TextView result4TV;
-    TextView result5TV;
-    TextView result6TV;
     int diceType = 0;
     int diceAmt = 1;
     int[] rolls;
     Switch accel;
     SeekBar numOfDice;
     TextView numberTV;
-    TextView[] listOfTV = new TextView[6];
+    LinearLayout results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,41 +58,20 @@ public class DiceActivity extends AppCompatActivity{
         initResults();
 
     }
-
+    //This function dynamically updates the layout with textviews depending on the number of dice selected
     public void updateResultViews(int amount)
     {
-        for(int i = 0; i < amount - 1; i++)
+        results.removeAllViews();
+        for(int i = 0; i < amount; i++)
         {
-            listOfTV[i].setVisibility(View.VISIBLE);
-        }
-        if(amount == 6)
-        {
-            for(int i = 0; i < 6; i++)
-            {
-                listOfTV[i].setVisibility(View.VISIBLE);
-            }
-        }
-        else if(amount < 6)
-        {
-            for(int j = (amount); j < 6; j++)
-            {
-                System.out.println("Number is:" + j);
-                listOfTV[j].setVisibility(View.INVISIBLE);
-            }
+            results.addView(new TextView(this));
         }
     }
 
     //Initialize textviews for results
     public void initResults()
     {
-        result1TV = (TextView)findViewById(R.id.result1);
-        result2TV = (TextView)findViewById(R.id.result2);
-        result3TV = (TextView)findViewById(R.id.result3);
-        result4TV = (TextView)findViewById(R.id.result4);
-        result5TV = (TextView)findViewById(R.id.result5);
-        result6TV = (TextView)findViewById(R.id.result6);
-        listOfTV = new TextView[]{result1TV, result2TV, result3TV, result4TV, result5TV, result6TV};
-
+        results = (LinearLayout)findViewById(R.id.resultLayout);
 
     }
     //Initialize Seekbar
@@ -212,9 +187,10 @@ public class DiceActivity extends AppCompatActivity{
 
             }
         }
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < results.getChildCount(); i++)
         {
-            listOfTV[i].setText("You Rolled a " + rolls[i]);
+            TextView v = (TextView)results.getChildAt(i);
+            v.setText("You Rolled: " + rolls[i]);
         }
 
     }
