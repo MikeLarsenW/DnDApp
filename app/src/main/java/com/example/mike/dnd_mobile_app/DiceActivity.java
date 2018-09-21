@@ -1,3 +1,7 @@
+//Group 6
+//DnD App
+//Implemented by Quinten Whitaker
+
 package com.example.mike.dnd_mobile_app;
 
 import android.content.Context;
@@ -5,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -39,15 +45,13 @@ public class DiceActivity extends AppCompatActivity{
     SeekBar numOfDice;
     TextView numberTV;
     LinearLayout results;
+    boolean switchVal;
+    Vibrator v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice);
-
-
-
-        accel = (Switch)findViewById(R.id.accelerometerSwitch);
 
         //Initialize various items
         rolls = new int[6];
@@ -56,7 +60,28 @@ public class DiceActivity extends AppCompatActivity{
         shakeInit();
         seekBarInit();
         initResults();
+        initSwitch();
+        initVibrator();
 
+    }
+
+
+    //Initialize vibrator
+    public void initVibrator()
+    {
+        v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+    }
+    //Initialize switch
+    //Set on checked change listener
+    public void initSwitch()
+    {
+        accel = (Switch)findViewById(R.id.accelerometerSwitch);
+        accel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                switchVal = isChecked;
+            }
+        });
     }
     //This function dynamically updates the layout with textviews depending on the number of dice selected
     public void updateResultViews(int amount)
@@ -106,7 +131,11 @@ public class DiceActivity extends AppCompatActivity{
         ShakeDetector.create(this, new ShakeDetector.OnShakeListener() {
             @Override
             public void OnShake() {
-                roll();
+                if(switchVal)
+                {
+                    roll();
+                }
+
             }
         });
 
@@ -152,6 +181,7 @@ public class DiceActivity extends AppCompatActivity{
     //Generate a random number based on the type of dice that is selected
     public void roll()
     {
+        v.vibrate(50);
         for(int i = 0; i < diceAmt; i++)
         {
 
