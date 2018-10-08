@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DiceActivity"></activity>
+        <activity android:name=".Spelltable"></activity>
+        <activity android:name=".Spell"></activity>
     </application>
 
     <uses-permission android:name="android.permission.VIBRATE"/>

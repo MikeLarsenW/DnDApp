@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainScreen extends AppCompatActivity {
 
-    Button btn;
+    Button btn,btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,15 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), DiceActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn2 = (Button)findViewById(R.id.spellTableButton);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), Spelltable.class);
                 startActivity(intent);
             }
         });
