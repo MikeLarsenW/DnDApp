@@ -8,7 +8,8 @@ import android.widget.Button;
 
 public class MainScreen extends AppCompatActivity {
 
-    Button btn,btn2;
+    Button btn,btn2,btn3,btn4,btn5;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,11 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
 
         btn = (Button)findViewById(R.id.diceScreenButton);
+        btn2 = (Button)findViewById(R.id.spellTableButton);
+        btn3 = (Button)findViewById(R.id.charactersScreenButton);
+        btn4 = (Button)findViewById(R.id.settingsScreenButton);
+        btn5 = (Button)findViewById(R.id.createCharacterScreenButton);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,7 +30,6 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
-        btn2 = (Button)findViewById(R.id.spellTableButton);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,5 +37,31 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /**
+         * TODO As each feature gets added the intent to navigate to each page should be added
+         */
+
+//        btn3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getBaseContext(), CharacterCreator.class);
+//                startActivity(intent);
+//            }
+//        });
+//        btn4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getBaseContext(), Characters.class);
+//                startActivity(intent);
+//            }
+//        });
+//        btn5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getBaseContext(), DiceActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }
