@@ -1,10 +1,13 @@
 package com.example.mike.dnd_mobile_app;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -18,6 +21,7 @@ private Button BtnCreate, BtnCancel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_char_creation_two);
 
+        ImageView image = findViewById(R.id.Image_Char);
 
         Text_Name = findViewById(R.id.EditText_Name);
 
@@ -44,6 +48,12 @@ private Button BtnCreate, BtnCancel;
             }
         });
 
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setImage();
+            }
+        });
     }
 
 
@@ -64,6 +74,30 @@ private Button BtnCreate, BtnCancel;
         DnDCharacter newChar = new DnDCharacter(Name, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma);
         Toast.makeText(this, "Character Created!", Toast.LENGTH_LONG).show();
     }
+
+    String[] picOptions = {"Gallery", "Camera", "Remove photo"};
+    public void setImage(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Character photo");
+        builder.setItems(picOptions, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        Toast.makeText(getApplicationContext(), "Choose pic from gallery", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(getApplicationContext(), "Take pic with camera", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(getApplicationContext(), "Remove pic", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+        builder.show();
+    }
+
 }
 
 

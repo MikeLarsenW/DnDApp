@@ -7,10 +7,12 @@
 <ScrollView
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/spellDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="test"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="18sp"
