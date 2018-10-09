@@ -22,6 +22,10 @@
         <activity android:name=".CreationActivity"></activity>
         <activity android:name=".CharCreationActivityTwo"></activity>
         <activity android:name=".CharacterView"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
     <uses-permission android:name="android.permission.VIBRATE"/>
