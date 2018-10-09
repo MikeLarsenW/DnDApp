@@ -8,21 +8,64 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/createCharacterScreenButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/to_character_creation"
+            tools:layout_editor_absoluteX="117dp"
+            tools:layout_editor_absoluteY="228dp" />
+
+        <Button
+            android:id="@+id/diceScreenButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
             android:text="To Dice Screen"
-            android:id="@+id/diceScreenButton"/>
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="391dp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/spellTableButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="To Spell Table"
-            android:id="@+id/spellTableButton"/>
-    </LinearLayout>
+            android:text="@string/to_spell_book"
+            tools:layout_editor_absoluteX="205dp"
+            tools:layout_editor_absoluteY="439dp" />
 
+        <Button
+            android:id="@+id/charactersScreenButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/to_characters"
+            tools:layout_editor_absoluteX="206dp"
+            tools:layout_editor_absoluteY="391dp" />
+
+        <Button
+            android:id="@+id/settingsScreenButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/to_settings"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="439dp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

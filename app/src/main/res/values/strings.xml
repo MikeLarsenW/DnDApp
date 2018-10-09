@@ -13,4 +13,8 @@
     <string name="roll">Roll</string>
     <string name="shake_switch">Shake to Roll </string>
     <string name="diceNum">Number of Dice </string>
+    <string name="to_settings">To Settings</string>
+    <string name="to_characters">To Characters</string>
+    <string name="to_character_creation">Create Character</string>
+    <string name="to_spell_book">To Spell Book</string>
 </resources>

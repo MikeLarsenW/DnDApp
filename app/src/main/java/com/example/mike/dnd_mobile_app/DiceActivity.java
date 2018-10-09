@@ -38,7 +38,7 @@ public class DiceActivity extends AppCompatActivity{
     //Define variables, views, and sensors
     Spinner s;
     Button btn;
-    int diceType = 0;
+    int diceType = 1;
     int diceAmt = 1;
     int[] rolls;
     Switch accel;
@@ -62,7 +62,10 @@ public class DiceActivity extends AppCompatActivity{
         initResults();
         initSwitch();
         initVibrator();
-
+        updateResultViews(1);
+        numberTV.setText(Integer.toString(1));
+        diceAmt = 1;
+        diceType = 1;
     }
 
 
@@ -165,6 +168,7 @@ public class DiceActivity extends AppCompatActivity{
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        spinner.setSelection(1);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
