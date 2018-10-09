@@ -41,7 +41,7 @@ public class MainScreen extends AppCompatActivity {
         /**
          * TODO As each feature gets added the intent to navigate to each page should be added
          */
-
+        btn4.setEnabled(false);
 //        btn3.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -49,13 +49,13 @@ public class MainScreen extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-//        btn4.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getBaseContext(), Characters.class);
-//                startActivity(intent);
-//            }
-//        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), CharacterView.class);
+                startActivity(intent);
+            }
+        });
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

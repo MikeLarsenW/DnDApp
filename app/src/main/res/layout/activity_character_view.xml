@@ -7,164 +7,222 @@
     tools:context=".CharacterView"
     tools:layout_editor_absoluteY="25dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="204dp"
-        android:layout_height="106dp"
-        android:layout_marginBottom="46dp"
-        android:layout_marginTop="38dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/Button_EditStats"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/randomchar" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Button
-        android:id="@+id/Button_EditStats"
-        android:layout_width="110dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="61dp"
-        android:text="Edit Stats"
-        app:layout_constraintBottom_toTopOf="@+id/TextView_Strength"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="129dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            app:srcCompat="@drawable/randomchar"
+            tools:layout_editor_absoluteX="128dp"
+            tools:layout_editor_absoluteY="33dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:text="Strength"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/TextView_Strength"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/TextView_Strength" />
+        <Button
+            android:id="@+id/Button_EditStats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="Edit Stats"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="156dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Dexterity"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="Constitution"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginRight="50dp"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="Strength"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="239dp" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Intelligence"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            <TextView
+                android:id="@+id/TextView_Strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="null"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="239dp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="Wisdom"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Charisma"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginRight="50dp"
+                android:padding="5dp"
+                android:text="Dexterity"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="284dp" />
 
-    <TextView
-        android:id="@+id/TextView_Strength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="251dp"
-        android:text="null"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/Button_EditStats"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/TextView_Dexterity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="null"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="284dp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/TextView_Dexterity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="null"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/TextView_Strength"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_Strength" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/TextView_Constitution"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="null"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/TextView_Dexterity"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_Dexterity" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginRight="50dp"
+                android:padding="5dp"
+                android:text="Constitution"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="320dp" />
 
-    <TextView
-        android:id="@+id/TextView_Intelligence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="null"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/TextView_Constitution"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_Constitution" />
+            <TextView
+                android:id="@+id/TextView_Constitution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="null"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="320dp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/TextView_Wisdom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:text="null"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/TextView_Intelligence"
-        app:layout_constraintTop_toBottomOf="@+id/TextView_Intelligence" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/TextView_Charisma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="null"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Button_DeleteChar"
-        app:layout_constraintStart_toStartOf="@+id/TextView_Wisdom" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginRight="50dp"
+                android:padding="5dp"
+                android:text="Intelligence"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="371dp" />
 
-    <Button
-        android:id="@+id/Button_DeleteChar"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_marginTop="17dp"
-        android:text="Delete Character"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/TextView_Charisma"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            <TextView
+                android:id="@+id/TextView_Intelligence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="null"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="371dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteY="165dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginRight="50dp"
+                android:padding="5dp"
+                android:text="Wisdom"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="407dp" />
+
+            <TextView
+                android:id="@+id/TextView_Wisdom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="null"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="407dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginRight="50dp"
+                android:padding="5dp"
+                android:text="Charisma"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="37dp"
+                tools:layout_editor_absoluteY="447dp" />
+
+            <TextView
+                android:id="@+id/TextView_Charisma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="null"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="447dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/Button_DeleteChar"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="30dp"
+            android:text="Delete Character"
+            tools:layout_editor_absoluteX="113dp"
+            tools:layout_editor_absoluteY="496dp" />
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DnD Mobile App</string>
+    <string name="app_name">DnD Toolkit</string>
     <string-array name="diceSpinnerElements">
         <item>Select Type</item>
         <item>D4</item>
