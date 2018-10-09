@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CharacterView"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="204dp"
+        android:layout_height="106dp"
+        android:layout_marginBottom="46dp"
+        android:layout_marginTop="38dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/Button_EditStats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/randomchar" />
+
+    <Button
+        android:id="@+id/Button_EditStats"
+        android:layout_width="110dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="61dp"
+        android:text="Edit Stats"
+        app:layout_constraintBottom_toTopOf="@+id/TextView_Strength"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:text="Strength"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView_Strength"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/TextView_Strength" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Dexterity"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="Constitution"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Intelligence"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="Wisdom"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Charisma"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/TextView_Strength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="251dp"
+        android:text="null"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/Button_EditStats"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView_Dexterity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="null"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/TextView_Strength"
+        app:layout_constraintTop_toBottomOf="@+id/TextView_Strength" />
+
+    <TextView
+        android:id="@+id/TextView_Constitution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="null"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/TextView_Dexterity"
+        app:layout_constraintTop_toBottomOf="@+id/TextView_Dexterity" />
+
+    <TextView
+        android:id="@+id/TextView_Intelligence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="null"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/TextView_Constitution"
+        app:layout_constraintTop_toBottomOf="@+id/TextView_Constitution" />
+
+    <TextView
+        android:id="@+id/TextView_Wisdom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="null"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/TextView_Intelligence"
+        app:layout_constraintTop_toBottomOf="@+id/TextView_Intelligence" />
+
+    <TextView
+        android:id="@+id/TextView_Charisma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="null"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Button_DeleteChar"
+        app:layout_constraintStart_toStartOf="@+id/TextView_Wisdom" />
+
+    <Button
+        android:id="@+id/Button_DeleteChar"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="17dp"
+        android:text="Delete Character"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/TextView_Charisma"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+</android.support.constraint.ConstraintLayout>

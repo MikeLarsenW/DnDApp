@@ -45,7 +45,7 @@ public class MainScreen extends AppCompatActivity {
 //        btn3.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(getBaseContext(), CharacterCreator.class);
+//                Intent intent = new Intent(getBaseContext(), CreationActivity.class);
 //                startActivity(intent);
 //            }
 //        });
@@ -56,12 +56,12 @@ public class MainScreen extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-//        btn5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getBaseContext(), DiceActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), CreationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
