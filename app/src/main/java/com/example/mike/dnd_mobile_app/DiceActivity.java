@@ -5,6 +5,7 @@
 package com.example.mike.dnd_mobile_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -17,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -79,6 +82,37 @@ public class DiceActivity extends AppCompatActivity{
         diceType = 1;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation, menu);
+        menu.findItem(R.id.menu_dice).setEnabled(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch(item.getItemId())
+        {
+            case R.id.menu_create:
+                intent = new Intent(this, CreationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_view:
+                intent = new Intent(this, CharacterView.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_spells:
+                intent = new Intent(this, Spelltable.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_settings:
+                intent = new Intent(this, null);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     //Initialize vibrator
     public void initVibrator()
@@ -218,6 +252,9 @@ public class DiceActivity extends AppCompatActivity{
         });
 
     }
+
+
+
     //Generate a random number based on the type of dice that is selected
     public void roll()
     {
