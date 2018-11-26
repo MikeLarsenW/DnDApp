@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_navigate"
+        android:title="Navigate">
+
+        <menu>
+            <item
+                android:title="Create"
+                android:id="@+id/menu_create" />
+            <item
+                android:title="View"
+                android:id="@+id/menu_view" />
+            <item
+                android:title="Dice"
+                android:id="@+id/menu_dice"/>
+            <item
+                android:title="Spells"
+                android:id="@+id/menu_spells"/>
+            <item
+                android:title="Settings"
+                android:id="@+id/menu_settings"/>
+        </menu>
+
+    </item>
+
+
+
+</menu>
