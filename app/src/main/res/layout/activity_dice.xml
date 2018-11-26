@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DiceActivity">
+    tools:context=".DiceActivity"
+    android:background="#263238">
 
 
     <LinearLayout
@@ -31,7 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/diceNum"
-                android:layout_marginHorizontal="5dp"/>
+                android:layout_marginHorizontal="5dp"
+                android:textColor="@color/white"/>
             <SeekBar
                 android:layout_weight=".75"
                 android:layout_width="0dp"
@@ -46,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/num"
                 android:text="#"
-                android:layout_marginHorizontal="5dp"/>
+                android:layout_marginHorizontal="5dp"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
@@ -70,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/shake_switch"
                 android:layout_gravity="center"
+                android:textColor="@color/white"
                 />
 
             <Switch
@@ -81,13 +85,16 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/resultLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
-        </LinearLayout>
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/flexBoxLayout"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal"
+        >
+
+    </com.google.android.flexbox.FlexboxLayout>
+
 
     </LinearLayout>
 
