@@ -52,7 +52,7 @@ public class Spelltable extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.menu_view:
-                intent = new Intent(this, CharacterView.class);
+                intent = new Intent(this, CharacterList.class);
                 startActivity(intent);
                 break;
             case R.id.menu_dice:
