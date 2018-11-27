@@ -13,27 +13,51 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="129dp"
-            android:layout_height="110dp"
+            android:id="@+id/charImage"
+            android:layout_width="130dp"
+            android:layout_height="140dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
+            android:onClick="pickImage"
             app:srcCompat="@drawable/randomchar"
             tools:layout_editor_absoluteX="128dp"
             tools:layout_editor_absoluteY="33dp" />
 
-        <Button
-            android:id="@+id/Button_EditStats"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:text="Edit Stats"
-            tools:layout_editor_absoluteX="137dp"
-            tools:layout_editor_absoluteY="156dp" />
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/charName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal"
+                android:text="Character Name"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="239dp" />
+
+            <ImageView
+                android:id="@+id/Button_EditCharacter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="onEditStatsClicked"
+                app:srcCompat="@drawable/ic_edit_black_24dp" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,11 +79,14 @@
                 tools:layout_editor_absoluteX="40dp"
                 tools:layout_editor_absoluteY="239dp" />
 
-            <TextView
-                android:id="@+id/TextView_Strength"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/EditText_Strength"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:gravity="center_horizontal"
+                android:inputType="number"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:text="null"
                 android:textSize="18sp"
@@ -85,12 +112,17 @@
                 tools:layout_editor_absoluteX="40dp"
                 tools:layout_editor_absoluteY="284dp" />
 
-            <TextView
-                android:id="@+id/TextView_Dexterity"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/EditText_Dexterity"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:text="null"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="262dp"
                 tools:layout_editor_absoluteY="284dp" />
@@ -114,12 +146,16 @@
                 tools:layout_editor_absoluteX="40dp"
                 tools:layout_editor_absoluteY="320dp" />
 
-            <TextView
-                android:id="@+id/TextView_Constitution"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/EditText_Constitution"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="number"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:text="null"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="262dp"
                 tools:layout_editor_absoluteY="320dp" />
@@ -137,18 +173,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginRight="50dp"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:text="Intelligence"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="40dp"
                 tools:layout_editor_absoluteY="371dp" />
 
-            <TextView
-                android:id="@+id/TextView_Intelligence"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/EditText_Intelligence"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="number"
                 android:padding="5dp"
                 android:text="null"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="262dp"
                 tools:layout_editor_absoluteY="371dp" />
@@ -173,12 +213,16 @@
                 tools:layout_editor_absoluteX="40dp"
                 tools:layout_editor_absoluteY="407dp" />
 
-            <TextView
-                android:id="@+id/TextView_Wisdom"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/EditText_Wisdom"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="number"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:text="null"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="262dp"
                 tools:layout_editor_absoluteY="407dp" />
@@ -202,15 +246,51 @@
                 tools:layout_editor_absoluteX="37dp"
                 tools:layout_editor_absoluteY="447dp" />
 
-            <TextView
-                android:id="@+id/TextView_Charisma"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/EditText_Charisma"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="number"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:text="null"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="262dp"
                 tools:layout_editor_absoluteY="447dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hiddenLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/Button_Cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0"
+                android:onClick="onCancelClicked"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/Button_Save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0"
+                android:onClick="onSaveClicked"
+                android:text="Save" />
         </LinearLayout>
 
         <Button
@@ -218,6 +298,7 @@
             android:layout_width="wrap_content"
             android:layout_height="42dp"
             android:layout_marginTop="30dp"
+            android:onClick="onDeleteClicked"
             android:text="Delete Character"
             tools:layout_editor_absoluteX="113dp"
             tools:layout_editor_absoluteY="496dp" />

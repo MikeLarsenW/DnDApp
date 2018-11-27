@@ -2,39 +2,61 @@ package com.example.mike.dnd_mobile_app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.renderscript.ScriptGroup;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CharCreationActivityTwo extends AppCompatActivity {
 
 private EditText Text_Name, Text_Strength, Text_Dexterity, Text_Constitution, Text_Intelligence, Text_Wisdom, Text_Charisma;
 private Button BtnCreate, BtnCancel;
 private ImageView image;
-private static final int REQUEST_TAKE_PHOTO = 1;
-private static final int SELECTED_PIC = 2;
+private static final int REQUEST_TAKE_PHOTO = 0;
+private static final int SELECTED_PHOTO = 1;
 private Bitmap bitmap;
+private String bitmapToString = "";
+String mCurrentPhotoPath = "";
+public static final String userPREFERENCES = "CharsCreated";
+SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_char_creation_two);
+        sharedpreferences = getSharedPreferences(userPREFERENCES, MODE_PRIVATE);
 
         image = findViewById(R.id.Image_Char);
-
         Text_Name = findViewById(R.id.EditText_Name);
-
         Text_Strength = findViewById(R.id.EditText_Strength);
         Text_Dexterity = findViewById(R.id.EditText_Dextirity);
         Text_Constitution = findViewById(R.id.EditText_Constitution);
@@ -74,14 +96,30 @@ private Bitmap bitmap;
     public void createChar()
     {
         String Name = Text_Name.getText().toString();
-        int Strength = Integer.parseInt(Text_Strength.getText().toString());
-        int Dexterity = Integer.parseInt(Text_Dexterity.getText().toString());
-        int Constitution = Integer.parseInt(Text_Constitution.getText().toString());
-        int Intelligence = Integer.parseInt(Text_Intelligence.getText().toString());
-        int Wisdom = Integer.parseInt(Text_Wisdom.getText().toString());
-        int Charisma = Integer.parseInt(Text_Charisma.getText().toString());
-        DnDCharacter newChar = new DnDCharacter(Name, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma);
-        Toast.makeText(this, "Character Created!", Toast.LENGTH_LONG).show();
+        if(Name != null && !Name.isEmpty()){
+            if(!sharedpreferences.contains(Name)){
+                int Strength = ifNull(Text_Strength.getText().toString());
+                int Dexterity = ifNull(Text_Dexterity.getText().toString());
+                int Constitution = ifNull(Text_Constitution.getText().toString());
+                int Intelligence = ifNull(Text_Intelligence.getText().toString());
+                int Wisdom =ifNull(Text_Wisdom.getText().toString());
+                int Charisma = ifNull(Text_Charisma.getText().toString());
+                DnDCharacter newChar = new DnDCharacter(bitmapToString, Name, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma);
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String json = gson.toJson(newChar);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(Name,json);
+                editor.commit();
+                Toast.makeText(this, "Character Created!", Toast.LENGTH_LONG).show();
+                //closeActivity();
+                Intent toMainScreen = new Intent(getApplicationContext(), MainScreen.class);
+                startActivity(toMainScreen);
+            } else {
+                characterNameExists(Name);
+            }
+        }else {
+            emptyCharacterName();
+        }
     }
 
     String[] picOptions = {"Camera","Gallery", "Remove photo"};
@@ -107,45 +145,155 @@ private Bitmap bitmap;
         builder.show();
     }
 
-    private void takePicture() {
+    public void takePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.example.mike.dnd_mobile_app",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
         }
     }
 
     private void pickPicture() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        startActivityForResult(intent, SELECTED_PIC);
+        Intent getPictureIntent = new Intent();
+        getPictureIntent.setType("image/*");
+        getPictureIntent.setAction(Intent.ACTION_GET_CONTENT);
+        getPictureIntent.addCategory(Intent.CATEGORY_OPENABLE);
+        startActivityForResult(getPictureIntent, SELECTED_PHOTO);
     }
 
-    protected void resetPicture(){
+    private void resetPicture(){
         image.setImageResource(R.drawable.randomchar);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            image.setImageBitmap(imageBitmap);
-        }
-        if (requestCode == SELECTED_PIC && resultCode == RESULT_OK)
-            try {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_TAKE_PHOTO) {
                 if (bitmap != null) {
                     bitmap.recycle();
                 }
-                InputStream stream = getContentResolver().openInputStream(data.getData());
-                bitmap = BitmapFactory.decodeStream(stream);
-                stream.close();
+                bitmap = rotateImage(setReducedImageSize());
                 image.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] b = baos.toByteArray();
+                bitmapToString = Base64.encodeToString(b, Base64.DEFAULT);
             }
-        super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == SELECTED_PHOTO) {
+                try {
+                    if (bitmap != null) {
+                        bitmap.recycle();
+                    }
+                    InputStream stream = getContentResolver().openInputStream(data.getData());
+                    bitmap = BitmapFactory.decodeStream(stream);
+                    stream.close();
+                    Bitmap rotatedImage = rotateBitmap(bitmap);
+                    image.setImageBitmap(rotatedImage);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    rotatedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] b = baos.toByteArray();
+                    bitmapToString = Base64.encodeToString(b, Base64.DEFAULT);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void characterNameExists(String Name){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Whoops...");
+        alert.setMessage("Character with name '" + Name + "' already exists. Change character name in order to create.");
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) { }
+        });
+        alert.show();
+    }
+
+    public void emptyCharacterName(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Whoops...");
+        alert.setMessage("Character's must have a name to be created.");
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) { }
+        });
+        alert.show();
+    }
+
+    public int ifNull(String value){
+        if(value != null && !value.isEmpty())
+            return Integer.parseInt(value);
+        else
+            return -1;
+    }
+
+    public File createImageFile() throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile( imageFileName, ".jpg", storageDir);
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    public Bitmap setReducedImageSize() {
+        int targetImageViewWidth = image.getWidth();
+        int targetImageViewHeight = image.getHeight();
+
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+        int cameraImageWidth = bmOptions.outWidth;
+        int cameraImageHeight = bmOptions.outHeight;
+
+        int scaleFactor = Math.min(cameraImageWidth/targetImageViewWidth, cameraImageHeight/targetImageViewHeight);
+        bmOptions.inSampleSize = scaleFactor;
+        bmOptions.inJustDecodeBounds = false;
+
+        return BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+    }
+
+    public Bitmap rotateImage(Bitmap bitmap){
+        ExifInterface exifInterface = null;
+        try {
+            exifInterface = new ExifInterface(mCurrentPhotoPath);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED);
+        Matrix matrix = new Matrix();
+        switch (orientation){
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                matrix.setRotate(90);
+                break;
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                matrix.setRotate(180);
+                break;
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                matrix.setRotate(270);
+                break;
+            default:
+        }
+        return Bitmap.createBitmap(bitmap ,0 ,0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+    }
+
+    public Bitmap rotateBitmap(Bitmap bitmap)
+    {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(-90);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 }
