@@ -33,7 +33,7 @@ import static com.example.mike.dnd_mobile_app.CharacterList.userPREFERENCES;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    Switch  cameraSwitch;
+    Switch cameraSwitch;
     Button deleteAll;
     ImageButton syncButton;
     SharedPreferences sharedPreferences;
@@ -65,7 +65,6 @@ public class SettingsActivity extends AppCompatActivity {
         account = GoogleSignIn.getLastSignedInAccount(this);
 
 
-
         if (adapter.getItemCount() == 0) {
             deleteAll.setEnabled(false);
         }
@@ -92,6 +91,7 @@ public class SettingsActivity extends AppCompatActivity {
                             }
                         })
                         .setNegativeButton(android.R.string.no, null).show();
+                break;
             case R.id.sync:
                 new AlertDialog.Builder(this)
                         .setTitle("Are you Sure?")
@@ -99,20 +99,21 @@ public class SettingsActivity extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
 
-                            if(account != null) {
+                            if (account != null) {
                                 initializeDriveClient(account);
                                 createFolder();
-                            } else{
+                            } else {
                                 signIn();
 
                             }
                         })
                         .setNegativeButton(android.R.string.no, null).show();
-
+                break;
 
 
         }
     }
+
     private void createFolder() {
         getDriveResourceClient()
                 .getRootFolder()
@@ -152,10 +153,10 @@ public class SettingsActivity extends AppCompatActivity {
         }
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-                    // The Task returned from this call is always completed, no need to attach
-                    // a listener.
-                    Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                    handleSignInResult(task);
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
         }
     }
 
@@ -173,15 +174,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     public ArrayList<String> getAllCharacters() {
         ArrayList<String> characters = new ArrayList<>();
-        Map<String,?> keys = sharedPreferences.getAll();
+        Map<String, ?> keys = sharedPreferences.getAll();
 
-        for(Map.Entry<String,?> entry : keys.entrySet()){
+        for (Map.Entry<String, ?> entry : keys.entrySet()) {
             characters.add(entry.getKey());
         }
         return characters;
     }
 
-    private void requestPermissions(){
+    private void requestPermissions() {
         if (!GoogleSignIn.hasPermissions(
                 GoogleSignIn.getLastSignedInAccount(getApplicationContext()),
                 Drive.SCOPE_APPFOLDER)) {
