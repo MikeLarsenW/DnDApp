@@ -1,15 +1,20 @@
 package com.example.mike.dnd_mobile_app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.Map;
+
+import static com.example.mike.dnd_mobile_app.CharCreationActivityTwo.userPREFERENCES;
 
 public class MainScreen extends AppCompatActivity {
 
     Button btn,btn2,btn3,btn4,btn5;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +57,7 @@ public class MainScreen extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), CharacterView.class);
+                Intent intent = new Intent(getBaseContext(), CharacterList.class);
                 startActivity(intent);
             }
         });

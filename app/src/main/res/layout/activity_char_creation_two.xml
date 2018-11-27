@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/Image_Char"
             android:layout_width="130dp"
-            android:layout_height="120dp"
+            android:layout_height="140dp"
             android:layout_marginTop="20dp"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/randomchar" />
@@ -29,7 +29,7 @@
             android:ems="10"
             android:hint="Name"
             android:gravity="center"
-            android:inputType="textPersonName" />
+            android:inputType="textCapWords" />
 
         <LinearLayout
             android:layout_width="match_parent"

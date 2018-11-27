@@ -2,23 +2,31 @@ package com.example.mike.dnd_mobile_app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 public class CreationActivity extends AppCompatActivity {
 
     public Button rndButton, customButton;
+    public static final String userPREFERENCES = "CharsCreated" ;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_char_creation);
+        sharedpreferences = getSharedPreferences(userPREFERENCES, MODE_PRIVATE);
 
 
         rndButton = findViewById(R.id.Button_Random);
@@ -36,14 +44,7 @@ public class CreationActivity extends AppCompatActivity {
                openActivity2();
             }
         });
-
-
-
-
-
     }
-
-
 
     public void openActivity2()
     {
@@ -53,32 +54,62 @@ public class CreationActivity extends AppCompatActivity {
 
     public void createRandomChar()
     {
-
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         final EditText edittext = new EditText(this);
-        alert.setMessage("Name your Character");
         alert.setTitle("Character Name");
-
+        alert.setMessage("Name your Character");
         alert.setView(edittext);
 
         alert.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+                String Name = edittext.getText().toString();
+                if(Name != null && !Name.isEmpty()) {
+                    if (!sharedpreferences.contains(Name)) {
+                        DnDCharacter newChar = new DnDCharacter(Name);
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        String json = gson.toJson(newChar);
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putString(Name,json);
+                        editor.commit();
+                        Log.d("JSON DEBUG", json);
 
-                String YouEditTextValue = edittext.getText().toString();
-                DnDCharacter newChar = new DnDCharacter(YouEditTextValue);
-                Toast.makeText(CreationActivity.this, "Character Created!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(CreationActivity.this, "Character Created!", Toast.LENGTH_LONG).show();
+                        Intent toMainScreen = new Intent(getApplicationContext(), MainScreen.class);
+                        startActivity(toMainScreen);
+                    } else {
+                        characterNameExists(Name);
+                    }
+                }else{
+                    emptyCharacterName();
+                }
             }
         });
 
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // what ever you want to do with No option.
-            }
+            public void onClick(DialogInterface dialog, int whichButton) { }
         });
 
         alert.show();
+    }
 
+    public void characterNameExists(String Name){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Whoops...");
+        alert.setMessage("Character with name '" + Name + "' already exists. Change character name in order to create.");
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) { }
+        });
+        alert.show();
+    }
 
+    public void emptyCharacterName(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Whoops...");
+        alert.setMessage("Character's must have a name to be created.");
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) { }
+        });
+        alert.show();
     }
 }
