@@ -42,7 +42,7 @@ public class MainScreen extends AppCompatActivity {
                 intent = new Intent(this, DiceActivity.class);
                 startActivity(intent); break;
             case R.id.settingsTile:
-                intent = new Intent(this, null);
+                intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent); break;
         }
     }
