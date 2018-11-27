@@ -82,12 +82,13 @@
             android:gravity="center_horizontal">
 
             <ImageView
+                android:id="@+id/settingsTile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="15dp"
-                android:src="@drawable/settings_tile"
-                android:id="@+id/settingsTile"
-                android:alpha="0.75"/>
+                android:alpha="0.75"
+                android:onClick="onClick"
+                android:src="@drawable/settings_tile" />
         </LinearLayout>
 
 
