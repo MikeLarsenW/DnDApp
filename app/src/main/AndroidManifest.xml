@@ -30,13 +30,12 @@
         <activity android:name=".Spell" />
         <activity android:name=".CreationActivity" />
         <activity android:name=".CharCreationActivityTwo" />
-        <activity android:name=".CharacterView" />
+        <activity android:name=".CharacterList" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".CharacterList" />
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.mike.dnd_mobile_app"
