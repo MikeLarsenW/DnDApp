@@ -27,8 +27,6 @@ public class MainScreen extends AppCompatActivity {
         spellTile = (ImageView)findViewById(R.id.spellTile);
         diceTile = (ImageView)findViewById(R.id.diceTile);
         settingTile = (ImageView)findViewById(R.id.settingsTile);
-
-
     }
 
 
@@ -41,7 +39,7 @@ public class MainScreen extends AppCompatActivity {
                 intent = new Intent(this, CreationActivity.class);
                 startActivity(intent); break;
             case R.id.viewCharacterTile:
-                intent = new Intent(this, CharacterView.class);
+                intent = new Intent(this, CharacterList.class);
                 startActivity(intent); break;
             case R.id.spellTile:
                 intent = new Intent(this, Spelltable.class);

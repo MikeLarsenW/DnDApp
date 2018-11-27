@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharCreationActivityTwo"
-    tools:layout_editor_absoluteY="25dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#263238"
+    tools:context=".CharCreationActivityTwo">
 
         <ImageView
             android:id="@+id/Image_Char"
@@ -27,9 +23,12 @@
             android:layout_height="52dp"
             android:layout_marginTop="20dp"
             android:ems="10"
+            android:gravity="center_horizontal"
             android:hint="Name"
-            android:gravity="center"
-            android:inputType="textCapWords" />
+            android:textColor="#ffffff"
+            android:textColorHint="#b0bec5"
+            android:inputType="textCapWords"
+            android:textSize="24sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Strength"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/EditText_Strength"
@@ -52,7 +52,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="14sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -67,7 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Dexterity"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/EditText_Dextirity"
@@ -75,7 +78,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="14sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
 
         </LinearLayout>
 
@@ -91,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Consitution"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/EditText_Constitution"
@@ -99,7 +105,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="14sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -114,7 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Intelligence"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/EditText_Intelligence"
@@ -122,7 +131,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="14sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
 
         </LinearLayout>
 
@@ -138,7 +149,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Wisdom"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/EditText_Wisdom"
@@ -146,7 +158,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="14sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
 
         </LinearLayout>
 
@@ -162,7 +176,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Charisma"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:id="@+id/EditText_Charisma"
@@ -170,7 +185,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="14sp" />
+                android:textSize="24sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -192,6 +209,5 @@
                 android:layout_height="wrap_content"
                 android:text="Create" />
         </LinearLayout>
-    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

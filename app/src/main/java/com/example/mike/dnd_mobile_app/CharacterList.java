@@ -1,5 +1,6 @@
 package com.example.mike.dnd_mobile_app;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -79,6 +82,42 @@ public class CharacterList extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
         toggleEmptyCharacters();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation, menu);
+        menu.findItem(R.id.menu_view).setEnabled(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch(item.getItemId())
+        {
+            case R.id.menu_create:
+                intent = new Intent(this, CreationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_view:
+                intent = new Intent(this, CharacterView.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_spells:
+                intent = new Intent(this, Spelltable.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_settings:
+                intent = new Intent(this, null);
+                startActivity(intent);
+                break;
+            case R.id.menu_dice:
+                intent = new Intent(this, DiceActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

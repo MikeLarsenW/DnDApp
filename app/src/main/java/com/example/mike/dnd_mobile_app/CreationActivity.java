@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -111,5 +113,41 @@ public class CreationActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int whichButton) { }
         });
         alert.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation, menu);
+        menu.findItem(R.id.menu_create).setEnabled(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch(item.getItemId())
+        {
+            case R.id.menu_create:
+                intent = new Intent(this, CreationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_view:
+                intent = new Intent(this, CharacterView.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_spells:
+                intent = new Intent(this, Spelltable.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_settings:
+                intent = new Intent(this, null);
+                startActivity(intent);
+                break;
+            case R.id.menu_dice:
+                intent = new Intent(this, DiceActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -16,6 +16,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -372,6 +374,42 @@ public class CharacterView extends AppCompatActivity {
         Matrix matrix = new Matrix();
         matrix.postRotate(-90);
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation, menu);
+        menu.findItem(R.id.menu_view).setEnabled(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch(item.getItemId())
+        {
+            case R.id.menu_create:
+                intent = new Intent(this, CreationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_view:
+                intent = new Intent(this, CharacterView.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_spells:
+                intent = new Intent(this, Spelltable.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_settings:
+                intent = new Intent(this, null);
+                startActivity(intent);
+                break;
+            case R.id.menu_dice:
+                intent = new Intent(this, DiceActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

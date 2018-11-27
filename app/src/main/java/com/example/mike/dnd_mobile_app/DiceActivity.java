@@ -110,6 +110,10 @@ public class DiceActivity extends AppCompatActivity{
                 intent = new Intent(this, null);
                 startActivity(intent);
                 break;
+            case R.id.menu_dice:
+                intent = new Intent(this, DiceActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

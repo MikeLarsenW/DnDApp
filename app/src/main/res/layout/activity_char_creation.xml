@@ -1,54 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreationActivity">
+    android:background="#263238"
+    android:orientation="vertical"
+    tools:context=".CreationActivity"
+    android:weightSum="100">
 
     <ImageView
         android:id="@+id/Image_Char"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="85dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginRight="54dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="81dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/Button_Random"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/randomchar" />
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/randomchar"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        />
 
-    <Button
-        android:id="@+id/Button_Random"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="139dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginLeft="54dp"
-        android:layout_marginRight="56dp"
-        android:layout_marginStart="54dp"
-        android:text="Random"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Button_Custom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Image_Char" />
 
-    <Button
-        android:id="@+id/Button_Custom"
-        android:layout_width="wrap_content"
-        android:layout_height="52dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginRight="54dp"
-        android:text="Custom "
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Button_Random"
-        app:layout_constraintTop_toTopOf="@+id/Button_Random" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/Button_Random"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/Button_Custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom "
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>
