@@ -5,6 +5,7 @@
     package="com.example.mike.dnd_mobile_app">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.camera" android:required="true" />
@@ -26,17 +27,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".DiceActivity" />
-        <activity android:name=".Spelltable" />
-        <activity android:name=".Spell" />
-        <activity android:name=".CreationActivity" />
-        <activity android:name=".CharCreationActivityTwo" />
+        <activity android:name=".DiceActivity"></activity>
+        <activity android:name=".Spelltable"></activity>
+        <activity android:name=".Spell"></activity>
+        <activity android:name=".CreationActivity"></activity>
+        <activity android:name=".CharCreationActivityTwo"></activity>
+        <activity android:name=".CharacterView"></activity>
+        <activity android:name=".SettingsActivity"
+            android:exported="true"></activity>
         <activity android:name=".CharacterList" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.apps.drive.APP_ID" android:value="id=dndapp-224018"
+            android:resource="@array/preloaded_fonts" />
+
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"
