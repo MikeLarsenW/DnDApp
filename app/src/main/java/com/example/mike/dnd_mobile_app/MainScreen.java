@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.util.Map;
 
@@ -14,59 +15,43 @@ import static com.example.mike.dnd_mobile_app.CharCreationActivityTwo.userPREFER
 
 public class MainScreen extends AppCompatActivity {
 
-    Button btn,btn2,btn3,btn4,btn5;
+    ImageView addTile, viewTile, spellTile, diceTile, settingTile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
-        btn = (Button)findViewById(R.id.diceScreenButton);
-        btn2 = (Button)findViewById(R.id.spellTableButton);
-        btn3 = (Button)findViewById(R.id.charactersScreenButton);
-        btn4 = (Button)findViewById(R.id.settingsScreenButton);
-        btn5 = (Button)findViewById(R.id.createCharacterScreenButton);
+        addTile = (ImageView)findViewById(R.id.createCharacterTile);
+        viewTile = (ImageView)findViewById(R.id.viewCharacterTile);
+        spellTile = (ImageView)findViewById(R.id.spellTile);
+        diceTile = (ImageView)findViewById(R.id.diceTile);
+        settingTile = (ImageView)findViewById(R.id.settingsTile);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), DiceActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), Spelltable.class);
-                startActivity(intent);
-            }
-        });
+    }
 
-        /**
-         * TODO As each feature gets added the intent to navigate to each page should be added
-         */
-        btn4.setEnabled(false);
-//        btn3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getBaseContext(), CreationActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), CharacterList.class);
-                startActivity(intent);
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), CreationActivity.class);
-                startActivity(intent);
-            }
-        });
+
+    public void onClick(View view)
+    {
+        Intent intent;
+        switch (view.getId())
+        {
+            case R.id.createCharacterTile:
+                intent = new Intent(this, CreationActivity.class);
+                startActivity(intent); break;
+            case R.id.viewCharacterTile:
+                intent = new Intent(this, CharacterView.class);
+                startActivity(intent); break;
+            case R.id.spellTile:
+                intent = new Intent(this, Spelltable.class);
+                startActivity(intent); break;
+            case R.id.diceTile:
+                intent = new Intent(this, DiceActivity.class);
+                startActivity(intent); break;
+            case R.id.settingsTile:
+                intent = new Intent(this, null);
+                startActivity(intent); break;
+        }
     }
 }

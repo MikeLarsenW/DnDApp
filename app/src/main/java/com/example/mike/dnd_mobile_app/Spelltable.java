@@ -9,12 +9,18 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.Layout;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,17 +30,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spelltable extends AppCompatActivity {
-
+    EditText searchFilter;
     ListView mySpellbook;
     ArrayList<SelectedSpell> spells = new ArrayList<>();
     ArrayAdapter<SelectedSpell> adapter;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation, menu);
+        menu.findItem(R.id.menu_spells).setEnabled(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch(item.getItemId())
+        {
+            case R.id.menu_create:
+                intent = new Intent(this, CreationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_view:
+                intent = new Intent(this, CharacterView.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_dice:
+                intent = new Intent(this, DiceActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_settings:
+                intent = new Intent(this, null);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spelltable);
         mySpellbook = findViewById(R.id.mySpellbook);
-
+        searchFilter = findViewById(R.id.searchFilter);
 
         //Spell Names
         spells.add(new SelectedSpell("Abi-Dalzim's Horrid Wiliting", "A Elemental Evil spell\n" +
@@ -7536,13 +7574,29 @@ public class Spelltable extends AppCompatActivity {
 
 
         final Intent intent = new Intent(this, Spell.class);
+
         //Link to spelltable
-          ArrayAdapter<SelectedSpell> adapter = new ArrayAdapter<SelectedSpell>(Spelltable.this, android.R.layout.simple_list_item_1, spells);
+        adapter = new ArrayAdapter<>(Spelltable.this, R.layout.list_view_white_test, spells);
             mySpellbook.setAdapter(adapter);
 
+        mySpellbook.setTextFilterEnabled(true);
 
+        searchFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                (Spelltable.this).adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         mySpellbook.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
