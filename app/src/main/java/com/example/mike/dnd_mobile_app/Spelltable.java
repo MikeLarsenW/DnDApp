@@ -55,8 +55,8 @@ public class Spelltable extends AppCompatActivity {
                 intent = new Intent(this, CharacterView.class);
                 startActivity(intent);
                 break;
-            case R.id.menu_spells:
-                intent = new Intent(this, Spelltable.class);
+            case R.id.menu_dice:
+                intent = new Intent(this, DiceActivity.class);
                 startActivity(intent);
                 break;
             case R.id.menu_settings:
