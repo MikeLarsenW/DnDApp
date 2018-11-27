@@ -13,7 +13,7 @@
             android:id="@+id/Image_Char"
             android:layout_width="130dp"
             android:layout_height="140dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/randomchar" />
 
@@ -21,19 +21,19 @@
             android:id="@+id/EditText_Name"
             android:layout_width="190dp"
             android:layout_height="52dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:gravity="center_horizontal"
             android:hint="Name"
             android:textColor="#ffffff"
             android:textColorHint="#b0bec5"
             android:inputType="textCapWords"
-            android:textSize="24sp"/>
+            android:textSize="18dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Strength"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
             <EditText
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"/>
         </LinearLayout>
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Dexterity"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
             <EditText
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"/>
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Consitution"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
             <EditText
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"/>
         </LinearLayout>
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Intelligence"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
             <EditText
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"/>
 
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Wisdom"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
             <EditText
@@ -158,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"/>
 
@@ -176,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp"
                 android:text="Charisma"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
             <EditText
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:textSize="24sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"/>
         </LinearLayout>
