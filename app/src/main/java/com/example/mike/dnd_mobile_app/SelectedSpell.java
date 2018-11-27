@@ -49,7 +49,7 @@ public class SelectedSpell implements Parcelable {
         });
     }
 
-    public static final Creator CREATOR = new Creator<SelectedSpell>() {
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator<SelectedSpell>() {
         public SelectedSpell createFromParcel(Parcel in) {
             return new SelectedSpell(in);
         }
