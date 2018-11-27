@@ -15,7 +15,6 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -115,9 +114,7 @@ public class CharacterView extends AppCompatActivity {
         Btn_EditChar.setEnabled(true);
         Btn_DeleteChar.setVisibility(View.VISIBLE);
         saveCancelButtons.setVisibility(View.GONE);
-        Log.d("CANCEL BUTTON CHAR VIEW", "onCancelClicked: set original image");
         setImage();
-        Log.d("CANCEL BUTTON CHAR VIEW", "onCancelClicked: set original image 22222222");
         setCharacterValues();
     }
 
@@ -161,7 +158,7 @@ public class CharacterView extends AppCompatActivity {
     public void onDeleteClicked(View view){
         AlertDialog.Builder deleteDialog = new AlertDialog.Builder(this);
         deleteDialog.setTitle("Delete");
-        deleteDialog.setMessage("Are you sure you want to delete '" + storedCharacter.getName() + "'");
+        deleteDialog.setMessage("Are you sure you want to delete '" + storedCharacter.getName() + "'?");
         deleteDialog.setCancelable(false);
         deleteDialog.setPositiveButton( "Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -302,10 +299,11 @@ public class CharacterView extends AppCompatActivity {
                     InputStream stream = getContentResolver().openInputStream(data.getData());
                     bitmap = BitmapFactory.decodeStream(stream);
                     stream.close();
-                    Bitmap rotatedImage = rotateBitmap(bitmap);
-                    CharImage.setImageBitmap(rotatedImage);
+                    //Bitmap rotatedImage = rotateBitmap(bitmap);
+                    //image.setImageBitmap(rotatedImage);
+                    CharImage.setImageBitmap(bitmap);
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    rotatedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     byte[] b = baos.toByteArray();
                     bitmapToString = Base64.encodeToString(b, Base64.DEFAULT);
                 } catch (FileNotFoundException e) {
@@ -314,8 +312,6 @@ public class CharacterView extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }else if (resultCode == RESULT_CANCELED){
-            Log.d("canceled clicked", "onActivityResult: CANCEL");
         }
     }
 
@@ -369,12 +365,12 @@ public class CharacterView extends AppCompatActivity {
         return Bitmap.createBitmap(bitmap ,0 ,0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
-    public Bitmap rotateBitmap(Bitmap bitmap)
+    /*public Bitmap rotateBitmap(Bitmap bitmap)
     {
         Matrix matrix = new Matrix();
         matrix.postRotate(-90);
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

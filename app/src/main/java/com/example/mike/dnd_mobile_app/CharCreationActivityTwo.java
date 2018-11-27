@@ -200,10 +200,11 @@ SharedPreferences sharedpreferences;
                     InputStream stream = getContentResolver().openInputStream(data.getData());
                     bitmap = BitmapFactory.decodeStream(stream);
                     stream.close();
-                    Bitmap rotatedImage = rotateBitmap(bitmap);
-                    image.setImageBitmap(rotatedImage);
+                    //Bitmap rotatedImage = rotateBitmap(bitmap);
+                    //image.setImageBitmap(rotatedImage);
+                    image.setImageBitmap(bitmap);
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    rotatedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     byte[] b = baos.toByteArray();
                     bitmapToString = Base64.encodeToString(b, Base64.DEFAULT);
                 } catch (FileNotFoundException e) {
@@ -292,12 +293,12 @@ SharedPreferences sharedpreferences;
         return Bitmap.createBitmap(bitmap ,0 ,0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
-    public Bitmap rotateBitmap(Bitmap bitmap)
+    /*public Bitmap rotateBitmap(Bitmap bitmap)
     {
         Matrix matrix = new Matrix();
         matrix.postRotate(-90);
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

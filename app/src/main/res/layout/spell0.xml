@@ -8,17 +8,17 @@
     android:background="#263238">
 
     <ScrollView
-        android:layout_width="364dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/spellDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:text="test"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="18sp"
-            android:layout_margin="20dp"
-            android:textColor="#ffffff"/>
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
     </ScrollView>
 </LinearLayout>

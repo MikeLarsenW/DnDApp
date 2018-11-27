@@ -6,22 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Spelltable"
-    android:background="#263238">
+    android:background="#263238" >
 
     <EditText
         android:id="@+id/searchFilter"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
-        android:hint="@android:string/search_go"
-        android:inputType="textPersonName"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:textColor="#ffffff"/>
+        android:hint="@android:string/search_go"
+        android:inputType="textPersonName"
+        android:textColor="#ffffff" />
 
     <ListView
         android:id="@+id/mySpellbook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp" />
+        android:layout_marginTop="20dp"
+        android:padding="5dp" />
 
 </LinearLayout>
