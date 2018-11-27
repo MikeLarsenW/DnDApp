@@ -26,13 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DiceActivity"></activity>
-        <activity android:name=".Spelltable"></activity>
-        <activity android:name=".Spell"></activity>
-        <activity android:name=".CreationActivity"></activity>
-        <activity android:name=".CharCreationActivityTwo"></activity>
-        <activity android:name=".CharacterView"></activity>
-        <activity android:name=".SettingsActivity"></activity>
+
+        <activity android:name=".DiceActivity" />
+        <activity android:name=".Spelltable" />
+        <activity android:name=".Spell" />
+        <activity android:name=".CreationActivity" />
+        <activity android:name=".CharCreationActivityTwo" />
         <activity android:name=".CharacterList" />
 
         <meta-data
