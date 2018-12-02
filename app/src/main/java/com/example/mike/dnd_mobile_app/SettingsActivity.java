@@ -170,6 +170,7 @@ public class SettingsActivity extends AppCompatActivity {
                                     writer.write("\n=================================\n"+
                                             "Character Name: "+n.getName()+"\n " +
                                             "Strength: "+n.getStrength()+"\n " +
+                                            "Dexterity: "+n.getDexterity()+"\n " +
                                             "Constitution: "+n.getConstitution()+"\n "+
                                             "Intelligence: "+n.getIntelligence()+"\n "+
                                             "Wisdom: "+n.getWisdom()+"\n "+
