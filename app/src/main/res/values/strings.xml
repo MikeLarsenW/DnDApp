@@ -22,4 +22,5 @@
     <string name="delete_all">Delete All Characters</string>
     <string name="sync">Sync With Drive</string>
     <string name="camera_access">Allow Camera Access</string>
+    <string name="server_client_id">510044197339-8dmmoh310kr5u7i6lj9coepije0q4bq6.apps.googleusercontent.com</string>
 </resources>

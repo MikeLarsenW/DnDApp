@@ -325,7 +325,7 @@ SharedPreferences sharedpreferences;
                 startActivity(intent);
                 break;
             case R.id.menu_settings:
-                intent = new Intent(this, null);
+                intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.menu_dice:
